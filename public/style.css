@@ -1,0 +1,84 @@
+body, html {
+  margin: 0; padding: 0;
+  overflow: hidden;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  background-color: #F0F5F6;
+}
+
+#container {
+  padding: 5px;
+}
+
+#container h1 {
+  margin-left: 10px;
+}
+
+#form-container {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  width: 50%;
+}
+
+#form {
+  height:100%;
+  width:100%;
+  border: none;
+  border-left: 1px solid grey;
+}
+
+#time {
+  position: absolute;
+  bottom: 0;
+  top: 46%;
+  left: 0;
+  right: 50%;
+  padding: 5px;
+}
+
+#intro {
+  margin-left: 10px;
+}
+
+#answers {
+  position: absolute;
+  padding: 5px;
+  bottom: 0;
+  top: 50%;
+  left: 0;
+  right: 50%;
+  border-top: 1px solid grey;
+}
+
+#name {
+  background-color: #F0F5F6;
+  border-radius: 3px;
+  border: 2px solid #8BCBCA;
+  padding: 5px;
+  margin-left: 10px;
+}
+
+#name-label {
+  margin-left: 10px;
+}
+
+#create_form {
+  font-size: 16px;
+  margin: 10px;
+  margin-top: 20px;
+  border-radius: 3px;
+  border: 2px solid;
+  padding: 10px 20px;
+  transition: background-color 0.2s ease-out 0s;
+  color: #8BCBCA;
+  background-color: #F0F5F6;
+}
+
+#create_form:hover {
+  cursor: pointer;
+  color: #FFF;
+  text-decoration: none;
+  border-color: #8BCBCA;
+  background-color: #8BCBCA;
+}

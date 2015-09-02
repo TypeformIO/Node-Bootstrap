@@ -4,8 +4,21 @@
   "description": "A kit with everything you need to get up and running with Typeform I/O",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "author": "Typeform - Victor Bjelkholm <victor@typeform.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "engines": {
+    "node": ">=0.11.16"
+  },
+  "dependencies": {
+    "body-parser": "^1.13.3",
+    "es6-promise": "^3.0.2",
+    "express": "^4.13.3",
+    "localtunnel": "^1.7.0",
+    "moment": "^2.10.6",
+    "node-fetch": "^1.3.2",
+    "semver": "^5.0.1"
+  }
 }
