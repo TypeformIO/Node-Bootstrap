@@ -8,7 +8,7 @@ in a node environment
 ## Requirements
 
 * NodeJS version 0.11 or later
-* An working internet connection (for local exposure via [https://github.com/localtunnel/localtunnel](Localtunnel) and rendering of the forms)
+* An working internet connection (for local exposure via [Localtunnel](https://github.com/localtunnel/localtunnel) and rendering of the forms)
 
 ## Installing
 
@@ -18,16 +18,16 @@ in a node environment
 ## Running
 
 To run this application, you'll need to have a Typeform I/O API-key already. If
-you don't have it, get it by filling out [https://io1.typeform.com/to/HMLOBl](this signup form) 
+you don't have it, get it by filling out [this signup form](https://io1.typeform.com/to/HMLOBl) 
 
 * Have your API-key ready and run `TYPEFORM_API_KEY=YOUR_KEY npm start`
 * Visit http://localhost:3000 in your browser
 
 ## Where to get help
 
-* [](Open up an issue) in this repository
-* In our official Slack channel ( [](Signup) )
-* Send email to [mailto:support@typeform.io](support@typeform.io)
+* [Open up an issue](https://github.com/TypeformIO/Node-Bootstrap/issues/new) in this repository
+* In our official Slack channel ( [Signup](https://io1.typeform.com/to/sHP9NQ) )
+* Send email to [support@typeform.io](mailto:support@typeform.io)
 
 ## Contributing
 
