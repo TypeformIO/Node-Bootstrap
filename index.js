@@ -18,8 +18,8 @@ app.use(express.static('public'));
 // Also, we need to be able to read the body in the request
 app.use(bodyParser.json());
 
-// API-TOKEN to use when creating the typeform
-var API_TOKEN = process.env.TYPEFORM_API_TOKEN;
+// API-KEY to use when creating the typeform
+var API_KEY= process.env.TYPEFORM_API_KEY;
 
 // Which version of the I/O API we want to use
 var API_VERSION = 'v0.4'
@@ -36,9 +36,9 @@ var SERVER_PORT = 3000;
 // Array with all the answers we've received so far
 var ANSWERS = [];
 
-// If there is no API_TOKEN set, we need to crash to prevent any auth errors
-if(API_TOKEN === undefined) {
-  throw new Error('You need to set the environment variable TYPEFORM_API_TOKEN for this application to run');
+// If there is no API_KEYset, we need to crash to prevent any auth errors
+if(API_KEY=== undefined) {
+  throw new Error('You need to set the environment variable TYPEFORM_API_KEY for this application to run');
 }
 
 // This will set the PUBLIC_URL to a domain that will map to your local computer
