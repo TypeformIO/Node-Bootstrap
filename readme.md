@@ -5,6 +5,8 @@ you want to use Typeform I/O. It's very basic at the moment and does not do
 a lot but it's useful to look at when you want to know how to use Typeform I/O
 in a node environment
 
+![preview](preview.png)
+
 ## Requirements
 
 * NodeJS version 0.11 or later
