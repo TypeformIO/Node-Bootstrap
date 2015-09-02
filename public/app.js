@@ -24,8 +24,9 @@ function create_list_of_answers(answers) {
     for(var i = 0; i < answers.length; i++) {
         // Take the answer of our first question from the form answers
         var said_yes = answers[i].answers[0].value;
-        // Take the time as well
+        // Take the time and name as well
         var time = answers[i].time;
+        var name = answers[i].name;
         var answer = null;
         if(said_yes) {
           answer = 'yes';
@@ -33,7 +34,7 @@ function create_list_of_answers(answers) {
           answer = 'no';
         }
         // Concatenate together the lines we want to show
-        list = list + time + ' - You said ' + answer + '<br/>'
+        list = list + time + ' - You said ' + answer + ' when we asked if your name was "' + name + '"<br/>'
     }
     // If list is a empty string, we don't have any answers yet
     if(list === '') {

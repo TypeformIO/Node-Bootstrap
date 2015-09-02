@@ -53,7 +53,8 @@ app.post('/create_form', function (req, res) {
   var form = {
     title: 'Test Form',
     // This is the endpoint we'll use to receive the results via webhooks
-    webhook_submit_url: globals.public_url + config.submit_endpoint,
+    // We're adding the name from the user as a parameter, encoded
+    webhook_submit_url: globals.public_url + config.submit_endpoint + '/' + encodeURIComponent(name),
     fields: [
       {
         type: 'yes_no',
@@ -70,10 +71,12 @@ app.post('/create_form', function (req, res) {
 });
 
 // Endpoint that get hit by Typeform I/O when a form have been submitted
-app.post(config.submit_endpoint, function(req, res) {
+app.post(config.submit_endpoint + '/:name', function(req, res) {
   var results = req.body;
   // Let's add the time when we received the results as well
   results.time = moment().format('H:mm:ss');
+  // Let's also add the name that this answer was for
+  results.name = decodeURIComponent(req.params.name);
   // Add the full results to our answers global
   globals.answers.push(results)
 });
