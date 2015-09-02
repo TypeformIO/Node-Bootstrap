@@ -3,11 +3,11 @@ var fetch = require('node-fetch');
 var localtunnel = require('localtunnel');
 var bodyParser = require('body-parser')
 var moment = require('moment');
-var PromisePolyfill = require('es6-promise').Promise;
 var semver = require('semver');
 
 var app = express();
 
+// Promises only work in 0.11 or above that has Promises
 if(semver.lt(process.version, '0.11.16')) {
   throw new Error("You need to use nodejs version 0.11.16 or later");
 }
@@ -19,50 +19,30 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 
 // API-KEY to use when creating the typeform
-var API_KEY= process.env.TYPEFORM_API_KEY;
+var API_KEY = process.env.TYPEFORM_API_KEY;
 
-// Which version of the I/O API we want to use
-var API_VERSION = 'v0.4'
+var config = {
+  // Which version of the I/O API we want to use
+  api_version: 'v0.4',
+  // Which endpoint the webhooks will use
+  submit_endpoint: '/submit_answer',
+  // Which port to run the application on
+  server_port: 3000
+}
 
-// A public url where the webhook can find this application
-var PUBLIC_URL = null;
-
-// Which endpoint the webhooks will use
-var SUBMIT_ENDPOINT = '/submit_answer';
-
-// Which port to run the application on
-var SERVER_PORT = 3000;
-
-// Array with all the answers we've received so far
-var ANSWERS = [];
+var globals = {
+  // Array with all the answers we've received so far
+  answers: [],
+  // A public url where the webhook can find this application
+  public_url: null
+}
 
 // If there is no API_KEYset, we need to crash to prevent any auth errors
 if(API_KEY=== undefined) {
   throw new Error('You need to set the environment variable TYPEFORM_API_KEY for this application to run');
 }
 
-// This will set the PUBLIC_URL to a domain that will map to your local computer
-var tunnel = localtunnel(SERVER_PORT, function(err, tunnel) {
-    if (err) {
-      throw new Error(err);
-    }
-    PUBLIC_URL = tunnel.url;
-});
 
-// Helper method to create a new typeform
-function create_typeform(form) {
-  return new PromisePolyfill(function(resolve) {
-    fetch('https://api.typeform.io/'+API_VERSION+'/forms', {
-        method: 'POST',
-        headers: {
-          'X-API-TOKEN': API_TOKEN
-        },
-        body: JSON.stringify(form)
-      }).then(function(response) {
-        return response.json();
-      }).then(resolve);
-  });
-}
 
 // Endpoint that get hit by the frontend when clicking on "Create your typeform"
 app.post('/create_form', function (req, res) {
@@ -73,7 +53,7 @@ app.post('/create_form', function (req, res) {
   var form = {
     title: 'Test Form',
     // This is the endpoint we'll use to receive the results via webhooks
-    webhook_submit_url: PUBLIC_URL + SUBMIT_ENDPOINT,
+    webhook_submit_url: globals.public_url + config.submit_endpoint,
     fields: [
       {
         type: 'yes_no',
@@ -90,24 +70,46 @@ app.post('/create_form', function (req, res) {
 });
 
 // Endpoint that get hit by Typeform I/O when a form have been submitted
-app.post(SUBMIT_ENDPOINT, function(req, res) {
+app.post(config.submit_endpoint, function(req, res) {
   var results = req.body;
   // Let's add the time when we received the results as well
   results.time = moment().format('H:mm:ss');
-  // Add the full results to our ANSWERS storage
-  ANSWERS.push(results)
+  // Add the full results to our answers global
+  globals.answers.push(results)
 });
 
 // Endpoint that get hit by the frontend every second to update the list of results
 app.get('/answers', function(req, res) {
-  res.send(ANSWERS);
+  res.send(globals.answers);
 });
 
 // Start express
-var server = app.listen(SERVER_PORT, 'localhost', function () {
+var server = app.listen(config.server_port, 'localhost', function () {
   var host = server.address().address;
   var port = server.address().port;
 
   console.log('Server running on http://' + host + ':' + port);
 });
 
+// Helper method to create a new typeform
+function create_typeform(form) {
+  return new Promise(function(resolve) {
+    fetch('https://api.typeform.io/'+config.api_version+'/forms', {
+        method: 'POST',
+        headers: {
+          'X-API-TOKEN': API_KEY
+        },
+        body: JSON.stringify(form)
+      }).then(function(response) {
+        return response.json();
+      }).then(resolve);
+  });
+}
+
+// This will set the public_url to a domain that will map to your local computer
+localtunnel(config.server_port, function(err, tunnel) {
+    if (err) {
+      throw new Error(err);
+    }
+    globals.public_url = tunnel.url;
+});
