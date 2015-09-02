@@ -18,6 +18,9 @@ function get_answers() {
 // Helper method to create the text containing all the results
 function create_list_of_answers(answers) {
     var list = '';
+    if(answers.length > 0) {
+      list = "Answers since you started the server: <br/>"
+    }
     for(var i = 0; i < answers.length; i++) {
         // Take the answer of our first question from the form answers
         var said_yes = answers[i].answers[0].value;
@@ -95,17 +98,21 @@ function start_app() {
   $form_iframe = document.getElementById('form');
   $answers = document.getElementById('answers');
   $time = document.getElementById('time');
+  $loading_indicator = document.getElementById('loading_indicator');
 
   // When user clicks on the create form button
-  $create_form_button.addEventListener('click', function() {
+  $create_form_button.addEventListener('click', function(ev) {
+    ev.preventDefault();
     var name = $input_name.value;
     if(name === '') {
       alert('Name cannot be empty!');
     } else {
+      form_loading($loading_indicator);
       // If we got a name, create the form
       create_form_with_name(name).then(function(form) {
         // And then show it in the panel to the right
         show_form(form, $form_iframe);
+        form_stop_loading($loading_indicator);
       });
     }
   });
@@ -119,6 +126,13 @@ function start_app() {
       render_answers(answers, $answers);
     });
   }, 1000);
+}
+
+function form_loading($indicator) {
+  $indicator.className = "";
+}
+function form_stop_loading($indicator) {
+  $indicator.className = "hide";
 }
 
 // When we're ready, start the app

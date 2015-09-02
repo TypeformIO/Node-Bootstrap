@@ -3,6 +3,9 @@ body, html {
   overflow: hidden;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   background-color: #F0F5F6;
+  color: #37404A;
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
 }
 
 #container {
@@ -52,7 +55,8 @@ body, html {
 }
 
 #name {
-  background-color: #F0F5F6;
+  margin-top: 10px;
+  background-color: #FFF;
   border-radius: 3px;
   border: 2px solid #8BCBCA;
   padding: 5px;
@@ -61,6 +65,8 @@ body, html {
 
 #name-label {
   margin-left: 10px;
+  color: black;
+  font-weight: 500;
 }
 
 #create_form {
@@ -82,3 +88,133 @@ body, html {
   border-color: #8BCBCA;
   background-color: #8BCBCA;
 }
+
+#loading_indicator {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    margin-left: -200px;
+    width: 400px;
+    z-index: 1000000;
+}
+
+.hide {
+  display: none;
+}
+
+.pulser {
+    position: relative;
+  }
+
+  .text {
+    position: absolute;
+    width: 200px;
+    margin-left: 100px;
+    text-align: center;
+    margin-top: 190px;
+  }
+  .pulse {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 400px;
+    height: 400px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  .pulse1 {
+    border: 15px solid #25e1f9;
+    -webkit-animation: pulse1 4s linear infinite;
+    -moz-animation: pulse1 4s linear infinite;
+    animation: pulse1 4s linear infinite;
+  }
+
+  .pulse2 {
+    border: 10px solid #25e1f9;
+    -webkit-animation: pulse2 4s linear infinite;
+    -moz-animation: pulse2 4s linear infinite;
+    animation: pulse2 4s linear infinite;
+  }
+
+  .pulse3 {
+    border: 12px solid #25e1f9;
+    -webkit-animation: pulse3 4s linear infinite;
+    -moz-animation: pulse3 4s linear infinite;
+    animation: pulse3 4s linear infinite;
+  }
+
+  .pulse4 {
+    border: 20px solid #25e1f9;
+    -webkit-animation: pulse4 4s linear infinite;
+    -moz-animation: pulse4 4s linear infinite;
+    animation: pulse4 4s linear infinite;
+  }
+
+  /* moz */
+  @-moz-keyframes pulse1 {
+    0% { -moz-transform: scale(0); opacity: 0; }
+    20% { -moz-transform: scale(0); opacity: 0; }
+    40% { -moz-transform: scale(.2); opacity: .4; }
+    60% { -moz-transform: scale(.4); opacity: .6; }
+    100% { -moz-transform: scale(.6); opacity: 0; }
+  }
+
+  @-moz-keyframes pulse2 {
+    0% { -moz-transform: scale(0); opacity: 0; }
+    25% { -moz-transform: scale(.2); opacity: .7; }
+    40% { -moz-transform: scale(.4); opacity: .5; }
+    65% { -moz-transform: scale(.6); opacity: .3; }
+    100% { -moz-transform: scale(.8); opacity: 0; }
+  }
+
+  @-moz-keyframes pulse3 {
+    0% { -moz-transform: scale(.1); opacity: 0; }
+    25% { -moz-transform: scale(.3); opacity: .7; }
+    50% { -moz-transform: scale(.5); opacity: .5; }
+    75% { -moz-transform: scale(.6); opacity: .3; }
+    100% { -moz-transform: scale(.66); opacity: 0; }
+  }
+
+  @-moz-keyframes pulse4 {
+    0% { -moz-transform: scale(.1); opacity: 0; }
+    30% { -moz-transform: scale(.3); opacity: .6; }
+    80% { -moz-transform: scale(.6); opacity: .4; }
+    100% { -moz-transform: scale(.8); opacity: 0; }
+  }
+
+  /* webkit */
+  @-webkit-keyframes pulse1 {
+    0% { -webkit-transform: scale(0); opacity: 0; }
+    20% { -webkit-transform: scale(0); opacity: 0; }
+    40% { -webkit-transform: scale(.2); opacity: .4; }
+    60% { -webkit-transform: scale(.4); opacity: .6; }
+    100% { -webkit-transform: scale(.6); opacity: 0; }
+  }
+
+  @-webkit-keyframes pulse2 {
+    0% { -webkit-transform: scale(0); opacity: 0; }
+    25% { -webkit-transform: scale(.2); opacity: .7; }
+    40% { -webkit-transform: scale(.4); opacity: .5; }
+    65% { -webkit-transform: scale(.6); opacity: .3; }
+    100% { -webkit-transform: scale(.8); opacity: 0; }
+  }
+
+  @-webkit-keyframes pulse3 {
+    0% { -webkit-transform: scale(.1); opacity: 0; }
+    25% { -webkit-transform: scale(.3); opacity: .7; }
+    50% { -webkit-transform: scale(.5); opacity: .5; }
+    75% { -webkit-transform: scale(.6); opacity: .3; }
+    100% { -webkit-transform: scale(.66); opacity: 0; }
+  }
+
+  @-webkit-keyframes pulse4 {
+    0% { -webkit-transform: scale(.1); opacity: 0; }
+    30% { -webkit-transform: scale(.3); opacity: .6; }
+    80% { -webkit-transform: scale(.6); opacity: .4; }
+    100% { -webkit-transform: scale(.8); opacity: 0; }
+  }

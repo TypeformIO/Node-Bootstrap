@@ -13,11 +13,20 @@
     <p id="intro">
       Lets create a typeform that uses your name inside of it!
     </p>
-    <form action="#">
+    <form action="">
       <label id="name-label" for="name">Your name:</label><br/>
       <input id="name" type="text" placeholder="Enter your name"/>
       <br/>
-      <input type="submit" id="create_form" value="Create your typeform"></input>
+      <div id="loading_indicator" class="hide">
+        <div id="pulser">
+          <div class="text">Creating form...</div>
+          <div class="pulse pulse1"></div>
+          <div class="pulse pulse2"></div>
+          <div class="pulse pulse3"></div>
+          <div class="pulse pulse4"></div>
+        </div>
+      </div>
+      <input type="submit" id="create_form" value="Create your typeform"/>
     </form>
     <div id="form-container">
       <iframe id="form" src="/no_form.html"></iframe>
