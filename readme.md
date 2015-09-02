@@ -8,8 +8,7 @@ in a node environment
 ## Requirements
 
 * NodeJS version 0.11 or later
-* NPM, comes with NodeJS
-* An working internet connection
+* An working internet connection (for local exposure via [https://github.com/localtunnel/localtunnel](Localtunnel) and rendering of the forms)
 
 ## Installing
 
@@ -18,24 +17,26 @@ in a node environment
 
 ## Running
 
-To run this application, you'll need to have a Typeform I/O API key already
+To run this application, you'll need to have a Typeform I/O API-key already. If
+you don't have it, get it by filling out [https://io1.typeform.com/to/HMLOBl](this signup form) 
 
-* Have your API-key ready and run `TYPEFORM_API_TOKEN=YOUR_TOKEN npm start`
-* Visit `localhost:3000` in your browser
-
-## Developing
-
-
+* Have your API-key ready and run `TYPEFORM_API_KEY=YOUR_KEY npm start`
+* Visit http://localhost:3000 in your browser
 
 ## Where to get help
 
-* Open up an issue in this repository
-* In our official Slack channel
-* Send email to support@typeform.io
+* [](Open up an issue) in this repository
+* In our official Slack channel ( [](Signup) )
+* Send email to [mailto:support@typeform.io](support@typeform.io)
 
 ## Contributing
 
-## List of contributers
+If you want to contribute, just follow the general code style and code on! We
+love pull requests.
+
+If you're unsure if we're gonna merge it or not, create an issue before and we'll
+discuss it.
+
 ## License
 The MIT License (MIT)
 
