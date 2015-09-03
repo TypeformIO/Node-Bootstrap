@@ -54,6 +54,7 @@ app.post('/create_form', function (req, res) {
     title: 'Test Form',
     // This is the endpoint we'll use to receive the results via webhooks
     // We're adding the name from the user as a parameter, encoded
+    // It will look something like this: https://your_url.com/submit_answer/Victor%20Bjelkholm
     webhook_submit_url: globals.public_url + config.submit_endpoint + '/' + encodeURIComponent(name),
     fields: [
       {
