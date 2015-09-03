@@ -3,14 +3,15 @@
 This is a bootstrap application that you can use to kickstart development when
 you want to use Typeform I/O. It's very basic at the moment and does not do
 a lot but it's useful to look at when you want to know how to use Typeform I/O
-in a node environment
+in a node environment. Basically what the application does is asking for your name, create a form containing that name and show all the results the application received from Typeform.
 
 ![preview](preview.png)
 
 ## Requirements
 
 * NodeJS version 0.11 or later
-* An working internet connection (for local exposure via [Localtunnel](https://github.com/localtunnel/localtunnel) and rendering of the forms)
+* An working internet connection (for giving you an public dns address via [Localtunnel](https://github.com/localtunnel/localtunnel) and rendering of the forms)
+* A Typeform I/O API-key. [Signup here if you haven't got one already](https://io1.typeform.com/to/HMLOBl)
 
 ## Installing
 
