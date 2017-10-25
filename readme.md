@@ -1,3 +1,6 @@
+# Sorry, Typeform I/O will be deprecated soon. Please visit https://developer.typeform.com/ to discover our new developer products
+
+
 ## Typeform I/O - NodeJS Bootstrap
 
 This is a bootstrap application that you can use to kickstart development when
